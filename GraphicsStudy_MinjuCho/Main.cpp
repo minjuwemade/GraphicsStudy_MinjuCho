@@ -12,7 +12,12 @@ int main()
     DXDebugLayer::Get().Init();
     if (DXContext::Get().Init())
     {
-        DXContext::Get().GetDevice();
+        while (true)
+        {
+            auto* cmdList = DXContext::Get().InitCommandList();
+
+            DXContext::Get().ExecuteCommandList();
+        }
         DXContext::Get().Shutdown();
     }
 
